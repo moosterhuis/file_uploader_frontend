@@ -8,10 +8,12 @@ import { FileUploadComponent } from
 import { AppComponent } from './app.component';
 import {HttpClientModule} from
 	'@angular/common/http';
+import { FileOverviewComponent } from './file-overview/file-overview.component';
 @NgModule({
 declarations: [
 	AppComponent,
 	FileUploadComponent,
+ FileOverviewComponent,
 ],
 imports: [
 	BrowserModule,

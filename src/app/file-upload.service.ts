@@ -7,7 +7,7 @@ providedIn: 'root'
 export class FileUploadService {
 	
 // API url
-baseApiUrl = "http://localhost:8080/api/files"
+baseApiUrl = "http://localhost:30001/api/files/"
 	
 constructor(private http:HttpClient) { }
 
@@ -24,4 +24,10 @@ upload(file: File):Observable<any> {
 	// with formData as req
 	return this.http.post(this.baseApiUrl, formData)
 }
+
+getAll():Observable<any> {
+
+	return this.http.get(this.baseApiUrl)
+}
+
 }

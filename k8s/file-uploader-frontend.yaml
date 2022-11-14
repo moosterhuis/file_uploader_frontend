@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: file-uploader-frontend-service
+  labels:
+    app: file-uploader
+    tier: frontend
+spec:
+  type: ClusterIP
+  selector:
+    app: file-uploader-frontend
+  ports:
+    - port: 80
+      targetPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: file-uploader-frontend-deploy
+  labels:
+    app: file-uploader-frontend
+    tier: frontend
+spec:
+  selector:
+    matchLabels:
+      app: file-uploader-frontend
+  template:
+    metadata:
+      labels:
+        app: file-uploader-frontend
+    spec:
+      containers:
+      - name: file-uploader-frontend
+        image: moosterhuis/file_uploader_frontend:v8
+        ports:
+        - containerPort: 80
